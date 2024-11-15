@@ -19,6 +19,7 @@ docker run -d -it --rm \
     --name earthly-buildkitd \
     --privileged \
     -v earthly-cache:/tmp/earthly:rw \
+    -e BUILDKIT_MAX_PARALLELISM=20 \
     ghcr.io/pythoninthegrass/earthly \
     "/usr/bin/entrypoint.sh buildkitd --config=/etc/buildkitd.toml"
 

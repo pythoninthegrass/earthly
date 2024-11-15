@@ -5,7 +5,7 @@ insecure-entitlements = [ "security.insecure" ]
 [worker.oci]
   enabled = true
   snapshotter = "auto"
-  max-parallelism = MAX_PARALLELISM
+  max-parallelism = BUILDKIT_MAX_PARALLELISM
   gc = true
   networkMode = "cni"
   cniBinaryPath = "/usr/libexec/cni"

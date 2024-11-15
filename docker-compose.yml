@@ -12,6 +12,7 @@ services:
     environment:
       EARTHLY_CACHE_DIR: /tmp/earthly
       EARTHLY_WORKING_DIR: /workspace
+      BUILDKIT_MAX_PARALLELISM: 20
     entrypoint: ["/usr/bin/entrypoint.sh"]
     command: ["buildkitd", "--config=/etc/buildkitd.toml"]
 
