@@ -1,0 +1,22 @@
+debug = false
+root = "/tmp/earthly/buildkit"
+insecure-entitlements = [ "security.insecure" ]
+
+[worker.oci]
+  enabled = true
+  snapshotter = "auto"
+  max-parallelism = MAX_PARALLELISM
+  gc = true
+  networkMode = "cni"
+  cniBinaryPath = "/usr/libexec/cni"
+  cniConfigPath = "/etc/cni/cni-conf.json"
+
+  # gckeepstorage sets storage limit for default gc profile, in MB.
+  gckeepstorage = 89840
+
+  [[worker.oci.gcpolicy]]
+    keepBytes = 47102033920
+    filters = [ "type==source.local", "type==source.git.checkout"]
+  [[worker.oci.gcpolicy]]
+    all = true
+    keepBytes = 94204067840

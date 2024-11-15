@@ -1,0 +1,19 @@
+services:
+  earthly:
+    image: ghcr.io/pythoninthegrass/earthly:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: earthly-buildkitd
+    privileged: true
+    volumes:
+      - earthly-cache:/tmp/earthly:rw
+    working_dir: /workspace
+    environment:
+      EARTHLY_CACHE_DIR: /tmp/earthly
+      EARTHLY_WORKING_DIR: /workspace
+    entrypoint: ["/usr/bin/entrypoint.sh"]
+    command: ["buildkitd", "--config=/etc/buildkitd.toml"]
+
+volumes:
+  earthly-cache:
